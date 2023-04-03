@@ -7,17 +7,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                // withCredentials([file(credentialsId: 'gclous-sa-02', variable: 'GCLOUD_CREDS')]) {
-                //   sh '''
-                //   PATH=/gcloud/google-cloud-sdk/bin:$PATH
-                //   gcloud version
-                //   gcloud auth activate-service-account  --key-file=$GCLOUD_CREDS
-                //   echo gcloud compute zones list
-                //   '''                 
-                // }
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
+                sh 'ls -al'
+                sh 'kubectl apply -f hello-deploy.yaml'
                 sh 'kubectl get pods'
-                sh 'ls -al'               
                 }
             } 
     }
