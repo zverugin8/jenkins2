@@ -21,12 +21,12 @@ pipeline {
             } 
     }
 }
-post {
-  always {
-  // sh '''
-  //   PATH=/gcloud/google-cloud-sdk/bin:$PATH
-  //   gcloud auth revoke $CLIENT_EMAIL
-  // '''
-  }
-}
+// post {
+//   always {
+//   sh '''
+//     PATH=/gcloud/google-cloud-sdk/bin:$PATH
+//     gcloud auth revoke $CLIENT_EMAIL
+//   '''
+//   }
+// }
 }
