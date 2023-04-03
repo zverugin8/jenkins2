@@ -5,12 +5,19 @@ pipeline {
       CLIENT_EMAIL='saroka-lab-02@saroka-gc-bootcamp.iam.gserviceaccount.com'
     }
     stages {
-        stage('Test') {
+        stage('Checkout') {
+            steps {
+                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
+                sh 'ls -al'
+                } 
+             }
+         }
+        stage('Deploy') {
             steps {
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
                 sh 'ls -al'
                 sh 'kubectl apply -f hello-deploy.yaml'
-                sh 'kubectl get sleep 10'
+                sh 'sleep 10'
                 sh 'kubectl get pods -o wide'
                 } 
              }
