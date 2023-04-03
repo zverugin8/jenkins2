@@ -10,11 +10,10 @@ pipeline {
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
                 sh 'ls -al'
                 sh 'kubectl apply -f hello-deploy.yaml'
-                sh 'kubectl get pods'
-                }
-            } 
-    }
-}
+                sh 'kubectl get pods' 
+                } 
+             }
+         }
 // post {
 //   always {
 //   sh '''
