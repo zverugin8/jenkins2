@@ -3,6 +3,7 @@ pipeline {
     environment{
       CLOUDSDK_CORE_PROJECT='saroka-gc-bootcamp'
       CLIENT_EMAIL='saroka-lab-02@saroka-gc-bootcamp.iam.gserviceaccount.com'
+      KUBECONFIG = credentials('KUBE_CRED')
     }
     stages {
         stage('Test') {
@@ -12,7 +13,8 @@ pipeline {
                   PATH=/gcloud/google-cloud-sdk/bin:$PATH
                   gcloud version
                   gcloud auth activate-service-account  --key-file=$GCLOUD_CREDS
-                  gcloud compute zones list 
+                  gcloud compute zones list
+                  kubectl --kubeconfig=$KUBECONFIG cluster-info
                   '''                 
             }
         }
