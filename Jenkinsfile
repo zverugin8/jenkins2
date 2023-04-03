@@ -17,6 +17,7 @@ pipeline {
                 // }
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
                 sh 'kubectl get pods'
+                sh 'ls -al'               
                 }
             } 
     }
