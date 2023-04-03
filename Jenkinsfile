@@ -15,7 +15,7 @@ pipeline {
                 //   echo gcloud compute zones list
                 //   '''                 
                 // }
-                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:55566']) {
+                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
                 sh 'kubectl get pods'
                 }
             } 
