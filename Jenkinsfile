@@ -10,7 +10,7 @@ pipeline {
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://minikube:8443']) {
                 sh '''
                 kubectl rollout status deploy hello-app
-                kubectl get pods --selector=app=hello-app --output=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | xargs -I {} kubectl logs {}
+                kubectl get pods --selector=app=hello-app --output=jsonpath='{range .items[*]}{.metadata.name}{"\\n"}{end}' | xargs -I {} kubectl logs {}
                 kubectl get svc hello-app-service
                 '''
                 } 
