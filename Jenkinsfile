@@ -7,14 +7,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
+                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://minikube:8443']) {
                 sh 'ls -al'
                 } 
              }
          }
         stage('Deploy') {
             steps {
-                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://192.168.58.2:8443']) {
+                withKubeConfig([credentialsId: 'kubecred', serverUrl: 'https://minikube:8443']) {
                 sh 'ls -al'
                 sh 'kubectl apply -f hello-deploy.yaml'
                 sh 'sleep 10'
