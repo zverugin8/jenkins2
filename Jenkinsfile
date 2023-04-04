@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment{
-      CLOUDSDK_CORE_PROJECT='saroka-gc-bootcamp'
-      CLIENT_EMAIL='saroka-lab-02@saroka-gc-bootcamp.iam.gserviceaccount.com'
+
     }
     stages {
         stage('Checkout') {
