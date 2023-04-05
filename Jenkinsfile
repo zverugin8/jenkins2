@@ -28,7 +28,7 @@ pipeline {
                 sh '''
                 echo "Testing access to service"
                 PORT=$(kubectl get svc hello-app-service -o jsonpath={.spec.ports[0].nodePort})
-                curl --fail --silent --show-error http://minikube:$PORT
+                curl --fail --silent --show-error http://kubernetes.docker.internal:$PORT
                 '''
                 } 
              }
